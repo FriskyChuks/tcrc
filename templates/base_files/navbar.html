@@ -1,0 +1,45 @@
+{% load static %}
+<div class="wrap"> 
+	<div class="header-top">
+        <div class="logo">
+            <a href="index.html"><img src="{% static 'images/logo.png' %}" alt=""/></a>
+        </div>
+        <div class="h_menu4"><!-- start h_menu4 -->
+            <a class="toggleMenu" href="#">Menu</a>
+            <ul class="nav">
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About US</a>
+                    <ul>
+                        <li><a href="pages.html">Dropdown</a></li>
+                        <li><a href="pages.html">Structure</a></li>
+                        <li><a href="pages.html">People</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'unit_dept' %}">Units/Dept</a>
+                    <ul>
+                        <li><a href="shortcodes.html">CSR</a></li>
+                        <li><a href="shortcodes.html">Locations</a></li>
+                        <li><a href="shortcodes.html">PPV</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Submit Report</a>
+                    <ul>
+                        <li><a href="blog.html">Dropdown</a></li>
+                        <li><a href="blog.html">Structure</a></li>
+                        <li><a href="blog.html">People</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Portfolio</a>
+                    <ul>
+                        <li><a href="portfolio.html">Dropdown</a></li>
+                        <li><a href="portfolio.html">Structure</a></li>
+                        <li><a href="portfolio.html">People</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+            <script type="text/javascript" src="js/nav.js"></script>
+        </div><!-- end h_menu4 -->
+        <div class="clear"></div>
+    </div>
+</div>

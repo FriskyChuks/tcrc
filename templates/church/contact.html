@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+	 <div class="main">
+	     <div class="wrap">
+	 	    <div class="contact">
+	          <div class="m_contact"><span class="left_line1"> </span>Contact<span class="right_line1"> </span></div>
+              <p class="m_12">Kindly fill the form below and submit. Thanks!</p>
+              <div class="contatct-top">
+               <form method="post" action="contact-post.html">
+					<div class="to">
+                     	<input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+					 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left: 10px">
+					</div>
+					<div class="to">
+                     	<input type="text" class="text" value="Your Website" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Website';}">
+					 	<input type="text" class="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" style="margin-left: 10px">
+					</div>
+					<div class="text">
+	                   <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
+	                </div>
+	                <div>
+	               		<input type="submit" value="Submit">
+	                </div>
+               </form>		
+            </div>
+		   </div>
+		</div>
+		</div>
+{% endblock %}
