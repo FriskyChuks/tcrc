@@ -1,45 +1,62 @@
 {% load static %}
-<div class="wrap"> 
-	<div class="header-top">
-        <div class="logo">
-            <a href="index.html"><img src="{% static 'images/logo.png' %}" alt=""/></a>
+ <!-- Sub Header -->
+ <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-8">
+          <div class="left-content">
+            <p>This is the official website of <em>TCRC</em> @ Media/Graphitorial</p>
+          </div>
         </div>
-        <div class="h_menu4"><!-- start h_menu4 -->
-            <a class="toggleMenu" href="#">Menu</a>
-            <ul class="nav">
-                <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'about_us' %}">About US</a>
-                    <ul>
-                        <li><a href="pages.html">Dropdown</a></li>
-                        <li><a href="pages.html">Structure</a></li>
-                        <li><a href="pages.html">People</a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'unit_dept' %}">Units/Dept</a>
-                    <ul>
-                        <li><a href="shortcodes.html">CSR</a></li>
-                        <li><a href="shortcodes.html">Locations</a></li>
-                        <li><a href="shortcodes.html">PPV</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Submit Report</a>
-                    <ul>
-                        <li><a href="blog.html">Dropdown</a></li>
-                        <li><a href="blog.html">Structure</a></li>
-                        <li><a href="blog.html">People</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Portfolio</a>
-                    <ul>
-                        <li><a href="portfolio.html">Dropdown</a></li>
-                        <li><a href="portfolio.html">Structure</a></li>
-                        <li><a href="portfolio.html">People</a></li>
-                    </ul>
-                </li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+        <div class="col-lg-4 col-sm-4">
+          <div class="right-icons">
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
             </ul>
-            <script type="text/javascript" src="js/nav.js"></script>
-        </div><!-- end h_menu4 -->
-        <div class="clear"></div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'home' %}" class="logo">
+                            TCRC
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li><a href="">About Us</a></li>
+                            <li class="scroll-to-section"><a href="#apply">Units/Departments</a></li>
+                            <li class="has-sub">
+                                <a href="javascript:void(0)">Messages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="">Recent</a></li>
+                                    <li><a href="">2020</a></li>
+                                    <li><a href="">2021</a></li>
+                                    <li><a href="">Others</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="scroll-to-section"><a href="#courses">Courses</a></li>  -->
+                            <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
