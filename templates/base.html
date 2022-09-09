@@ -10,11 +10,12 @@
     <title>{% block title %}{% endblock title %}</title>
 
     {% include 'base_files/css.html' %}
-    {% include 'base_files/js.html' %}
+    
     {% include 'base_files/navbar.html' %}
 </head>
 <body>
     {% block content %}
     {% endblock %}
+    {% include 'base_files/js.html' %}
 </body>
 </html>
