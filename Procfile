@@ -1,1 +1,1 @@
-web: gunicorn emr.wsgi
+web: gunicorn tcrc.wsgi
