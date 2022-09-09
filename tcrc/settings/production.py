@@ -4,10 +4,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-d2n995k6e(9=y$#xbaa(l%otbbpns7zskyz$4!*xvy&mg*l#7i'
 
@@ -15,7 +11,6 @@ SECRET_KEY = 'django-insecure-d2n995k6e(9=y$#xbaa(l%otbbpns7zskyz$4!*xvy&mg*l#7i
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
-
 
 # Application definition
 
@@ -140,7 +135,5 @@ STATICFILES_DIRS = (
     STATIC_DIR,
 )
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
