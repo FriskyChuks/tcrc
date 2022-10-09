@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.core.exceptions import ObjectDoesNotExists
+from django.core.exceptions import ObjectDoesNotExist
 
 from . models import *
 
 def home(request):
     try:
         unit_depts = UnitsAndDepartments.objects.all()
-    except ObjectDoesNotExists:
+    except ObjectDoesNotExist:
         pass
     context = {"unit_depts":unit_depts}
     return render(request, 'church/index.html',context)
