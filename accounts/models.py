@@ -56,7 +56,7 @@ class User(AbstractBaseUser):
     active 			= models.BooleanField(default=True)
     staff 			= models.BooleanField(default=False)
     admin			= models.BooleanField(default=False)
-    group 			= models.ForeignKey(Group, on_delete=models.CASCADE, blank=True, null=True)
+    # group 			= models.ForeignKey(Group, on_delete=models.CASCADE, blank=True, null=True)
     timestamp 		= models.DateTimeField(auto_now_add=True, auto_now=False)
 
     USERNAME_FIELD = 'username' 
