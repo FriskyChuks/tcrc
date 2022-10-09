@@ -4,10 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from . models import *
 
 def home(request):
-    try:
-        unit_depts = UnitsAndDepartments.objects.all()
-    except ObjectDoesNotExist:
-        pass
+    unit_depts = UnitsAndDepartments.objects.all()
     context = {"unit_depts":unit_depts}
     return render(request, 'church/index.html',context)
 
