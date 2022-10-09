@@ -3,12 +3,19 @@
  <div class="sub-header">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-sm-8">
+        <div class="col-lg-6 col-sm-6">
           <div class="left-content">
             <p>This is the official website of <em>TCRC</em> @ Media/Graphitorial</p>
+            
           </div>
         </div>
-        <div class="col-lg-4 col-sm-4">
+        <div class="col-lg-3 col-sm-3">
+          <form method="GET" action="">
+            <input name="q" value="{{ request.GET.q }}" type="text" 
+                class="form-control border-0 shadow-none" placeholder="Search here">
+          </form>
+        </div>
+        <div class="col-lg-3 col-sm-4">
           <div class="right-icons">
             <ul>
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -49,6 +56,7 @@
                             </li>
                             <!-- <li class="scroll-to-section"><a href="#courses">Courses</a></li>  -->
                             <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
+                            <li><a href="{% url 'membership' %}">Membership Form</a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
