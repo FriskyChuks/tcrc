@@ -1,0 +1,106 @@
+from datetime import date
+from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.forms import UserCreationForm
+
+from . models import *
+
+
+def home(request):
+    unit_depts = UnitsAndDepartments.objects.all()
+    activities = Activities.objects.all()
+    context = {"unit_depts": unit_depts, "activities": activities}
+    return render(request, 'church/index.html', context)
+
+
+def about_us(request):
+    pass
+    return render(request, 'church/about_us.html', {})
+
+
+def unit_dept(request):
+    unit_depts = UnitsAndDepartments.objects.all()
+    context = {"unit_depts": unit_depts}
+    return render(request, 'church/unit_dept.html', context)
+
+
+def submit_report(request):
+    pass
+    return render(request, 'church/contact.html', {})
+
+
+def contact(request):
+    pass
+    return render(request, 'church/contact.html', {})
+
+
+def attendance_view(request):
+    msg = ""
+    unit_dept = MembershipRegister.objects.get(
+        user_id=request.user.id).unit_dept
+    attendance_list = Attendance.objects.filter(unit_dept__id=unit_dept.id)
+    programs = Program.objects.filter(program_type='group')
+    council_member = CouncilMember.objects.filter(user_id=request.user.id)
+    if council_member or unit_dept.title == 'Ushering':
+        programs = Program.objects.all()
+        attendance_list = Attendance.objects.filter(unit_dept__isnull=True)
+        unit_dept.id = ''
+    if request.method == 'POST':
+        program = request.POST.get('program')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        attendance = request.POST.get('attendance')
+        comment = request.POST.get('comment')
+        instance = Attendance.objects.create(program_id=program, date=date, time=time,
+                                             attendance=attendance, unit_dept_id=unit_dept.id, comment=comment, created_by_id=request.user.id)
+        instance.save()
+        msg = 'Attndance saved sucessfully'
+
+    context = {'programs': programs, "msg": msg,
+               'attendance_list': attendance_list}
+    return render(request, 'church/attendance.html', context)
+
+
+def request_fund(request):
+    president = CouncilMember.objects.filter(
+        user_id=request.user.id, office__title='President')
+    pending_request = FundRequest.objects.filter(
+        created_by_id=request.user.id, approved=False, declined=False).order_by('-id')
+    if president:
+        pending_request = FundRequest.objects.filter(
+            approved=False, declined=False).order_by('-id')
+    if request.method == 'POST':
+        total_amount = request.POST.get('total_amount')
+        request_details = request.POST.get('request_details')
+
+        obj = FundRequest.objects.create(total_amount=total_amount, request_details=request_details,
+                                         created_by_id=request.user.id)
+        obj.save()
+        return redirect('request_fund')
+    contex = {'pending_request': pending_request, 'president': president}
+    return render(request, 'church/request_fund.html', contex)
+
+
+def approve_fund_request(request, id):
+    FundRequest.objects.filter(id=id).update(approved=True)
+    return redirect('request_fund')
+
+
+def decline_fund_request(request, id):
+    FundRequest.objects.filter(id=id).update(declined=True)
+    return redirect('request_fund')
+
+
+def image_gallery(request):
+    msg = ''
+    collections = ImageCollection.objects.all()
+    if request.method == 'POST':
+        images = request.FILES.getlist('images')
+        collection = request.POST.get('collection')
+        for image in images:
+            new_image = ImageGallery(image=image, collection_id=collection)
+            new_image.save()
+        msg = 'Images uploaded successfully'
+    context = {"msg": msg, "collections": collections}
+    return render(request, 'church/image_gallery.html', context)

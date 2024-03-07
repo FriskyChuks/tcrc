@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!---strat-slider---->
+{% include 'base_files/custom_js.html' %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<div class="wrap"> 
+	<!-- end header_main4 -->
+        <div class="slider" style="height:600px;">
+				<!---CArousel STARTS HERE----->
+				<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+					  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner" style="height:600px;">
+					  <div class="carousel-item active" data-bs-interval="10000">
+						<img src="{% static 'images/carousel/DSC_0397.JPG' %}" class="d-block w-100" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+						  <h5>First slide label</h5>
+						  <p>Some representative placeholder content for the first slide.</p>
+						</div>
+					  </div>
+					  <div class="carousel-item" data-bs-interval="2000">
+						<img src="{% static 'images/carousel/DSC_0589.JPG' %}" class="d-block w-100" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+						  <h5>Second slide label</h5>
+						  <p>Some representative placeholder content for the second slide.</p>
+						</div>
+					  </div>
+					  <div class="carousel-item">
+						<img src="{% static 'images/carousel/DSC_0611.JPG' %}" class="d-block w-100" alt="...">
+						<div class="carousel-caption d-none d-md-block">
+						  <h5>Third slide label</h5>
+						  <p>Some representative placeholder content for the third slide.</p>
+						</div>
+					  </div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+					  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					  <span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+					  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					  <span class="visually-hidden">Next</span>
+					</button>
+				  </div>
+ 		       <!---//End-CAROUSEL----->
+	    </div>
+	 </div>
+	 <div class="main">
+	     <div class="wrap">
+	 	   <h2 class="m_1">A place of Discovery, Recovery and Fulfilment in Christ</h2>
+	 	     <div class="content-top">
+	 	    	<div class="col_1_of_4 span_1_of_4">
+	 	    		<i class="settings"> </i>
+					<img src="{% static 'images/pic.jpg' %}" alt=""/>
+					<div class="desc">
+						<h3>Easy Customizable</h3>
+						<p>Lorem ipsum dolor sit amet,consect<br> adipiscing elit, sed diam nonummy nibh<br>euismod tincidunt ut laoreet dolore delenit.</p>
+					</div>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+	 	    		<i class="clock"> </i>
+					<img src="{% static 'images/pic1.jpg' %}" alt=""/>
+					<div class="desc">
+						<h3>Project Planning</h3>
+						<p>augue duis dolore te feugait nulla<br> adipiscing elit, sed diam nonummy nibh<br>euismod tincidunt ut laoreet dolore delenit.</p>
+					</div>
+				</div>
+				<div class="col_1_of_4 span_1_of_4">
+	 	    		<i class="aeroplane"> </i>
+					<img src="{% static 'images/pic2.jpg' %}" alt=""/>
+					<div class="desc">
+						<h3>Fastest Workers</h3>
+						<p>soluta nobis eleifend option congue<br> adipiscing elit, sed diam nonummy nibh<br>euismod tincidunt ut laoreet dolore delenit.</p>
+					</div>
+				</div>
+				<div class="clear"></div>
+		     </div>
+		     <div class="m_3"><span class="left_line"></span> Top Features<span class="right_line"> </span></div>
+		      <div class="content-middle">
+	 	    	<div class="col_1_of_middle span_1_of_middle">
+	 	    		<img src="{% static 'images/mac_img1.png' %}" alt=""/>
+	 	    	</div>
+				<div class="col_1_of_middle span_1_of_middle">
+				   <h3>diam nonummy nibh euismod tincidunt ut laoreet dolore</h3>
+	 	    	   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+	 	    	   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam</p>
+	 	    	   <div class="btn"><a href="#">Learn More</a></div>
+	 	    	</div>
+				<div class="clear"></div>
+		     </div>
+		     <div class="content-middle-bottom">
+	 	    	<div class="col_1_of_middle span_1_of_middle">
+	 	    	   <h3>diam nonummy nibh euismod tincidunt ut laoreet dolore</h3>
+	 	    	   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duisautem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+	 	    	   <div class="btn"><a href="#">Learn More</a></div>
+	 	    	</div>
+				<div class="col_1_of_middle span_1_of_middle">
+					<ul class="progress vertical">
+					  <li class="bar bar-success" style="width:100%;height:70%;"> </li>
+					</ul>
+					<ul class="progress vertical">
+					  <li class="bar bar-success" style="width:100%;height:60%;"> </li>
+				    </ul>
+				    <ul class="progress vertical">
+					  <li class="bar bar-success" style="width:100%;height:20%;"> </li>
+				    </ul>
+				    <ul class="progress vertical">
+					  <li class="bar bar-success" style="width:100%;height:40%;"> </li>
+				    </ul>
+				    <ul class="progress vertical">
+					  <li class="bar bar-success" style="width:100%;height:10%;"> </li>
+				    </ul>
+			    </div>
+				<div class="clear"></div>
+		     </div>
+		     <div class="m_3"><span class="left_line"></span> Our Projects<span class="right_line"> </span></div>
+		      <div class="content-top">
+				 <div class="col_1_of_projects span_1_of_projects"><a href="#">
+				   <div class="view view-first">
+                    <img src="{% static 'images/pic3.jpg' %}" alt=""/>
+                      <div class="mask">
+                        <h2>Hover Style #1</h2>
+                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         <a class="popup-with-zoom-anim" href="#small-dialog3"> <div class="info">Read More</div></a>
+		                     <div id="small-dialog3" class="mfp-hide">
+							   <div class="pop_up2">
+							   	  <img src="{% static 'images/pic3.jpg' %}"/ alt=""/>
+							   	  <h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				                  <p class="m_5">Photography</p>
+							   </div>
+							 </div>
+                        </div>
+                     </div> 
+					<h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    <p class="m_5">Photography</p>
+				  </a> </div>
+				 <div class="col_1_of_projects span_1_of_projects"><a href="#">
+				   <div class="view view-first">
+                    <img src="{% static 'images/pic6.jpg' %}" alt=""/>
+                      <div class="mask">
+                        <h2>Hover Style #1</h2>
+                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         <a class="popup-with-zoom-anim" href="#small-dialog4"> <div class="info">Read More</div></a>
+		                     <div id="small-dialog4" class="mfp-hide">
+							   <div class="pop_up2">
+							   	  <img src="{% static 'images/pic6.jpg' %}"/ alt=""/>
+							   	   <h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    				<p class="m_5">Branding</p>
+							   </div>
+							 </div>
+                        </div>
+                     </div> 
+					<h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    <p class="m_5">Branding</p>
+				  </a> </div>
+				 <div class="col_1_of_projects span_1_of_projects"><a href="#">
+				   <div class="view view-first">
+                    <img src="{% static 'images/pic5.jpg' %}" alt=""/>
+                      <div class="mask">
+                        <h2>Hover Style #1</h2>
+                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         <a class="popup-with-zoom-anim" href="#small-dialog5"> <div class="info">Read More</div></a>
+		                     <div id="small-dialog5" class="mfp-hide">
+							   <div class="pop_up2">
+							   	  <img src="{% static 'images/pic5.jpg' %}"/ alt=""/>
+							   	   <h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    			   <p class="m_5">Web Design</p>
+							   </div>
+							 </div>
+                        </div>
+                     </div> 
+					<h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    <p class="m_5">Web Design</p>
+				  </a> </div>
+				 <div class="col_1_of_projects span_1_of_projects"><a href="#">
+				   <div class="view view-first">
+                    <img src="{% static 'images/pic4.jpg' %}" alt=""/>
+                      <div class="mask">
+                        <h2>Hover Style #1</h2>
+                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         <a class="popup-with-zoom-anim" href="#small-dialog6"> <div class="info">Read More</div></a>
+		                     <div id="small-dialog6" class="mfp-hide">
+							   <div class="pop_up2">
+							   	  <img src="{% static 'images/pic4.jpg' %}"/ alt=""/>
+							   	   <h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    				<p class="m_5">Marketing</p>
+							   </div>
+							 </div>
+                        </div>
+                     </div> 
+					<h3 class="m_4"><a href="#">augue duis dolore te feugait</a></h3>
+				    <p class="m_5">Marketing</p>
+				  </a> </div>
+				<div class="clear"></div>
+		 </div>
+		 <div class="m_3"><span class="left_line"></span>Testimonials<span class="right_line"> </span></div>
+		      <div class="wmuSlider example">
+			    <div class="wmuSliderWrapper">
+				   <article style="position: absolute; width: 100%; opacity: 0;"> 
+				   	   <div class="banner-text">
+						  <p>diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor<br> in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+					   </div>
+					   <h3 class="m_6">Ut wisienim, <span class="bg1">Company name</span></h3>
+				   </article>
+				   <article style="position: relative; width: 100%; opacity: 1;"> 
+				   	   <div class="banner-text">
+						  <p>claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me  <br>exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor<br> in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+					   </div>
+					   <h3 class="m_6">Ut wisienim, <span class="bg1">Company name</span></h3>
+				   </article>
+				   <article style="position: absolute; width: 100%; opacity: 0;">
+				       <div class="banner-text">
+						  <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta <br> in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+					   </div>
+					    <h3 class="m_6">Ut wisienim, <span class="bg1">Company name</span></h3>
+				   </article>
+				   <article style="position: absolute; width: 100%; opacity: 0;">
+				        <div class="banner-text">
+						  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam<br>exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor<br> in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+					   </div>
+					    <h3 class="m_6">Ut wisienim, <span class="bg1">Company name</span></h3>
+				   </article>
+				  </div>
+                 <ul class="wmuSliderPagination">
+                	<li><a href="#" class="">0</a></li>
+                	<li><a href="#" class="class="wmuActive"">1</a></li>
+                	<li><a href="#" >2</a></li>
+                	<li><a href="#">3</a></li>
+                </ul>
+              </div>
+                 <script src="{% static 'js/jquery.wmuSlider.js' %}"></script> 
+				   <script>
+       					$('.example').wmuSlider();         
+   				   </script> 	
+			</div>
+	    </div>	   
+{% endblock %}

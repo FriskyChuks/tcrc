@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% include 'base_files/css.html' %}
+    
+    {% include 'base_files/navbar.html' %}
+</head>
+<body>
+    <br>
+    {% block content %}
+    {% endblock %}
+    {% include 'base_files/js.html' %}
+</body>
+</html>

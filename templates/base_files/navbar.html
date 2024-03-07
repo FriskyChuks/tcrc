@@ -1,0 +1,111 @@
+{% load static %}
+ <!-- Sub Header -->
+  <!-- <div class="sub-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <div class="left-content">
+            <p>This is the official website of <em>TCRC</em> @ Media/Graphitorial</p>
+            
+          </div>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="col-lg-3 col-sm-3">
+          <form method="GET" action="">
+            <input name="q" value="{{ request.GET.q }}" type="text" 
+                class="form-control border-0 shadow-none" placeholder="Search here">
+          </form>
+        </div>
+        {% endif %}
+        <div class="col-lg-3 col-sm-4">
+          <div class="right-icons">
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'home' %}" class="logo">
+                            TCRC
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{% url 'home' %}" class="active">Home</a></li>
+                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                            <!-- <li class="scroll-to-section"><a href="#apply">Units/Departments</a></li> -->
+                            <li class="has-sub">
+                                <a href="javascript:void(0)">Messages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="">Recent</a></li>
+                                    <li><a href="">2020</a></li>
+                                    <li><a href="">2021</a></li>
+                                    <li><a href="">Others</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="scroll-to-section"><a href="#courses">Courses</a></li>  -->
+                            <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
+                            {% if not request.user.is_authenticated %}
+                              <li><a href="{% url 'membership' %}">Membership Form</a></li>
+                            {% endif %}
+                            {% if request.user.is_authenticated %}
+                            <li class="has-sub">
+                              <a href="javascript:void(0)">ACTIONS</a>
+                              <ul class="sub-menu">
+                                <li><a href="{% url 'attendance' %}">Manage Attendance</a></li>
+                                <li>
+                                  <a href="{% url 'request_fund' %}">Fund Requests</a>
+                                </li>
+                                <li><a href="">Reports</a></li>
+                                <li>
+                                  <a href="{% url 'image_gallery' %}">Upload Images</a>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="has-sub">
+                              <a href="javascript:void(0)">{{request.user}}</a>
+                              <ul class="sub-menu">
+                                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                              </ul>
+                            </li>
+                            {% else %}
+                              <li><a href="{% url 'login' %}">Login</a></li>
+                            {% endif %}
+                            {% if request.user.is_authenticated and request.user.is_superuser %}
+                              <li>
+                                <ul>
+                                  <li>
+                                    <!-- <div class="col-lg-3 col-sm-3"> -->
+                                      <form method="GET" action="{% url 'search' %}">
+                                        <input name="q" value="{{ request.GET.q }}" type="text" 
+                                            class="form-control border-0 shadow-none" placeholder="Search here">
+                                      </form>
+                                    <!-- </div> -->
+                                  </li>
+                                </ul>
+                              </li>
+                            {% endif %}
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
