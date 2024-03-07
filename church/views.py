@@ -8,9 +8,12 @@ from . models import *
 
 
 def home(request):
+    print(request.user.groups.name)
+    gallery = ImageGallery.objects.all()
     unit_depts = UnitsAndDepartments.objects.all()
     activities = Activities.objects.all()
-    context = {"unit_depts": unit_depts, "activities": activities}
+    context = {"unit_depts": unit_depts,
+               "activities": activities, "gallery": gallery}
     return render(request, 'church/index.html', context)
 
 
