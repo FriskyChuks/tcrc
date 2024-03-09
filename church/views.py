@@ -4,15 +4,16 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 
-from . models import *
+from .models import *
+from files.models import ImageGallery
 
 
 def home(request):
-    print(request.user.groups.name)
+    media_staff = request.user.groups.filter(name='Media')
     gallery = ImageGallery.objects.all()
     unit_depts = UnitsAndDepartments.objects.all()
     activities = Activities.objects.all()
-    context = {"unit_depts": unit_depts,
+    context = {"unit_depts": unit_depts, "media_staff": media_staff,
                "activities": activities, "gallery": gallery}
     return render(request, 'church/index.html', context)
 
@@ -93,17 +94,3 @@ def approve_fund_request(request, id):
 def decline_fund_request(request, id):
     FundRequest.objects.filter(id=id).update(declined=True)
     return redirect('request_fund')
-
-
-def image_gallery(request):
-    msg = ''
-    collections = ImageCollection.objects.all()
-    if request.method == 'POST':
-        images = request.FILES.getlist('images')
-        collection = request.POST.get('collection')
-        for image in images:
-            new_image = ImageGallery(image=image, collection_id=collection)
-            new_image.save()
-        msg = 'Images uploaded successfully'
-    context = {"msg": msg, "collections": collections}
-    return render(request, 'church/image_gallery.html', context)

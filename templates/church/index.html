@@ -52,14 +52,18 @@ width: 300px;
                     <div class="price">
                       <!-- <span>$36.00</span> -->
                     </div>
-                    <a href=""><img src="{% static 'assets/images/meeting-01.jpg' %}" alt="Online Teaching"></a>
+                    {% if item.image %}
+                    <a href=""><img src="{{item.image.url}}" alt="Online Teaching"></a>
+                    {% else %}
+                      <a href=""><img src="{% static 'assets/images/congregation.JPG' %}" alt="Online Teaching"></a>
+                    {% endif %}
                   </div>
                   <div class="down-content">
                     <!-- <div class="date">
                       <h6>Nov <span>24</span></h6>
                     </div> -->
-                    <a href=""><h4>{{item.title}}</h4></a>
-                    <p>Brief description about the unit...read more</p>
+                    <a href=""><h4>{{item.title}} <span style="font-size: small; color: blue;">view details...</span></h4></a>
+                    <!-- <p>Brief description about the unit...read more</p> -->
                   </div>
                 </div>
               {% endfor %}
@@ -274,7 +278,15 @@ width: 300px;
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading">
-            <h2>Our Photo Galary</h2>
+            <h2>Our Photo Galary &nbsp;&nbsp;
+              {% if media_staff %}
+                <span style="font-size: small;">
+                  <a href="{% url 'image_gallery' %}">
+                      <i>Click here to Upload more Images</i>
+                  </a>
+                </span>
+              {% endif %}
+            </h2>
           </div>
         </div>
         <div class="col-lg-12">
@@ -283,17 +295,17 @@ width: 300px;
             <div class="item">
               <img class="image-roll" src="{{ image.image.url }}" alt="Course One">
               <div class="down-content">
-                <h4><span style="font-size: small;">Collection:</span> {{image.collection}}</h4>
-                <div class="info">
+                <h4><span style="font-size: small;">Collection:</span> {{image.collection}} <br>
+                  <span style="font-size: small;"><a href="{% url 'collection_gallery' %}">Go to this collection...</a></span>
+                </h4>
+                
+                <!-- <div class="info">
                   <div class="row">
                     <div class="col-8">
                       <a href="">view more...</a>
                     </div>
-                    <div class="col-4">
-                       <span>$160</span>
-                    </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             {% endfor %}

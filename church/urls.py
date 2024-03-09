@@ -14,5 +14,5 @@ urlpatterns = [
          name='approve_fund_request'),
     path('decline_fund_request/<id>/', decline_fund_request,
          name='decline_fund_request'),
-    path('image_gallery/', image_gallery, name='image_gallery'),
+
 ]

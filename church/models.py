@@ -74,18 +74,3 @@ class FundRequestApproval(models.Model):
 
     def __str__(self):
         return str(self.approved_by)
-
-
-class ImageCollection(models.Model):
-    title = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.title
-
-
-class ImageGallery(models.Model):
-    image = models.ImageField(upload_to='images/gallery')
-    collection = models.ForeignKey(ImageCollection, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.image)
