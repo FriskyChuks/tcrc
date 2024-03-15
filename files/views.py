@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.db.models import Q
+
 from .models import *
 
 
@@ -30,20 +32,36 @@ def image_detail_view(request, image_id):
 
 
 def file_uploads_view(request):
-    msg, new_file, file = '', '', ''
+    msg, file = '', ''
     categories = MediaCategory.objects.all()
     if request.method == 'POST':
         file = request.FILES.get('files')
-        print(file)
         category = request.POST.get('category')
         description = request.POST.get('description')
-        _date = request.POST.get('_date')
-        new_file = MediaLibrary.objects.create(
-            file=file, category_id=category, _date=_date, description=description)
+        file_date = request.POST.get('_date')
+        MediaLibrary.objects.create(
+            file=file, category_id=category, file_date=file_date, description=description)
+        msg = 'Images uploaded successfully'
         return redirect('file_uploads')
-        if new_file:
-            msg = 'Images uploaded successfully'
-        else:
-            msg = 'Failed'
     context = {"msg": msg, "categories": categories}
     return render(request, 'files/file_upload.html', context)
+
+
+def file_list_view(request):
+    size = 0
+    try:
+        query = request.GET.get('q')
+    except:
+        query = None
+    lookups = (Q(file__icontains=query) | Q(file_date__month__iexact=query) |
+               Q(file_date__year__iexact=query)) | Q(description__icontains=query)
+    if query:
+        files = MediaLibrary.objects.filter(lookups).distinct()
+        for file in files:
+            size = float(file.file.size) / 1048 / 1000
+        context = {'files': files, 'size': size, 'query': query}
+    else:
+        files = MediaLibrary.objects.all().order_by('-file_date')[:21]
+        a = "Please enter a search parameter!"
+        context = {'files': files, 'size': size, 'query': a}
+    return render(request, 'files/file_list.html', context)

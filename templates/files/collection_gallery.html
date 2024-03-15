@@ -66,8 +66,6 @@
                    <ul>
                     <li class="btn btn-outline-dark active" data-filter="*">All</li>
                     {% for collection in collections %}
-                      <!-- <li class="btn btn-outline-dark" data-filter=".gts">Girls T-shirt</li>
-                      <li class="btn btn-outline-dark" data-filter=".lap">Laptops</li> -->
                       <li class="btn btn-outline-dark text" data-filter=".{{ collection.id }}">{{ collection }}</li>
                     {% endfor %}
                    </ul>
