@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+  {% block title%}TCRC|Upload File{% endblock title%}
+
+{% block content %}
+<br>
+<style>
+  #selectBox{
+   border-radius: 25px;
+   display: inline-block;
+   overflow: hidden;
+   background: hsl(0, 0%, 95%);
+   height: 37px;
+   width: 400px;
+ }
+</style>
+<section class="contact-us" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 align-self-center">
+            <form class="row g-4" id="contact" action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="text-align: center; color: green;">{{ msg }}</div>
+                <h5>Upload Files</h5>
+                <div class="col-md-5">
+                    <label for="" class="form-label">Select File(s)</label>
+                    <input style="color: blue;" type="file" multiple name="files">
+                </div>
+                <div class="col-md-2">
+                    <label for="" class="form-label">Date</label>
+                    <input type="date" name="_date">
+                </div>
+                <div class="col-md-5">
+                    <label for="" class="form-label">File Category</label>
+                    <select name="category" class="form-control">
+                      {% for category in categories %}
+                        <option value="{{category.id}}" {% if category.title == "Audio" %}selected{% endif %}>
+                          {{category.title}} 
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                <div class="col-md-12">
+                    <label for="" class="form-label">Description
+                        <i style="color: grey;">
+                            (e.g Sunday, Midweek Service, Revival, Staff Fellowship)
+                        </i>
+                    </label>
+                    <input type="text" name="description">
+                </div>
+                <button class="btn btn-primary">Upload File(s)</button>
+            </form>  
+        </div>
+      </div>
+    </div>
+    {% include 'base_files/footer.html' %}
+  </section>
+
+{%endblock%}

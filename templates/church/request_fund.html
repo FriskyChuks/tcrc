@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+  {% block title%}TCRC|Membershp{% endblock title%}
+
+{% block content %}
+
+<style>
+  #selectBox{
+   border-radius: 25px;
+   display: inline-block;
+   overflow: hidden;
+   background: hsl(0, 0%, 95%);
+   height: 37px;
+   width: 400px;
+ }
+</style>
+<section class="contact-us" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 align-self-center">
+            <form id="contact" action="" method="POST">{% csrf_token %}
+              <!-- TABLE HERE -->
+              {% if request_list %}
+              <div class="table table-responsive">
+                  <h5>Fund Request List</h5>
+                  <table class="table">
+                      <thead>
+                          <th>Date</th>
+                          <th>Amount Requested</th>
+                          <th>Request Details</th>
+                          <th>Requested By</th>
+                          <th>Status</th>
+                          {% if president %}
+                            <th>Action</th>
+                          {% endif %}
+                          </thead>
+                          <tbody>
+                          {% for request in request_list %}
+                          <tr>
+                              <td>{{ request.request_date|date }}</td>
+                              <td>N{{ request.total_amount|intcomma }}</td>
+                              <td>{{ request.request_details }}</td>
+                              <td>{{ request.created_by }}</td>
+                              <td>
+                                {% if request.approved %}
+                                  <b style="color: green;">Approved<b/>
+                                {% elif request.declined %}
+                                  <b style="color: red;">Declined<b/>
+                                    &nbsp;&nbsp;&nbsp;
+                                  <a href="{% url 'declined_request_detail' request.id %}">
+                                    <span title="View Details"><i class="fa-solid fa-eye"></i></span>
+                                  </a>
+                                {% else %}
+                                  <b style="color: rgba(0, 0, 255, 0.662);">Pending<b/>
+                                {% endif %}
+                              </td>
+                              {% if president %}
+                                <td>
+                                  <a href="{% url 'approve_fund_request' request.id %}">
+                                    <span title="Approved Request"><i class="fas fa-check-circle"></i></span>
+                                  </a>
+                                  &nbsp;&nbsp;&nbsp;
+                                  <a href="{% url 'decline_fund_request' request.id %}">
+                                    <span title="Decline Request"><i class="fa-solid fa-xmark"></i></span>
+                                  </a>
+                                </td>
+                              {% endif %}
+                          </tr>
+                          {% endfor %}
+                          </tbody>
+                  </table>
+              </div>
+              {% else %}
+              <h3 style="text-align: center;">No pending Fund Request(s); Take a break please!</h3>
+              <hr>
+              {% endif %}   
+              <br>
+                <div style="text-align: center; color: green;">{{ msg }}</div>
+                <h5>Fund Request Form</h5> <br>
+                <label for="" class="form-label">Amount Requesting</label>
+                <input type="number" name="total_amount" min="0", step="any" required>
+                <label for="" class="form-label">Details/Description</label>
+                <textarea name="request_details" id="" cols="30" rows="10" placeholder="Enter details here"></textarea>
+                <button class="btn btn-primary">Submit Request</button> 
+            </form>  
+        </div>
+      </div>
+    </div>
+    {% include 'base_files/footer.html' %}
+  </section>
+
+{%endblock%}
+<select class="form-control" name="program" id="" required>
+    <option selected disabled value="">... Please select a program</option>
+    {% for program in programs %}
+        <option value="{{ program.id }}">{{ program.title }}</option>
+    {% endfor %}
+</select>

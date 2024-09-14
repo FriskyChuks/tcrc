@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+  {% block title%}TCRC|Membershp{% endblock title%}
+
+{% block content %}
+<style>
+   .selectBox{
+    border-radius: 25px;
+    display: inline-block;
+    overflow: hidden;
+    background: hsl(0, 0%, 95%);
+    height: 37px;
+    width: 330px;
+  }
+</style>
+
+<section class="contact-us" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 align-self-center">
+            <div class="row">
+                <!-- [ stiped-table ] start -->
+                <div class="col-xl-12">
+                    <div class="card">
+                        {% if not query %}
+                            <div class="card-header">    
+                                <!-- <h5>No Search</h5> -->
+                                <span class="d-block m-t-5">{{query1}}</span>
+                                <span class="d-block m-t-5"><code>{{msg}}</code></span>
+                            </div>
+                        {% else %}
+                            <div class="card-header">
+                                <span class="d-block m-t-5">Your search for 
+                                    <code>{{query}}</code> yielded <code>{{results.count}}</code> record(s)
+                                </span> 
+                                <span class="d-block m-t-5">{{ msg }}</span>   
+                            </div>
+                            <!-- table -->
+                            <div class="card-body table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>EMAIL</th>
+                                                <th>FIRST Name</th>
+                                                <th>LAST Name</th>
+                                                <th>UNIT/DEPT</th>
+                                                <th>ACTIONS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for user in results %}
+                                                <tr>
+                                                    <td><a href="">{{ user.email }}</a></td>
+                                                    <td>{{ user.first_name }}</td>
+                                                    <td>{{ user.last_name }}</td>
+                                                    {% for member in members %}
+                                                        {% if member.user.id == user.id %}
+                                                            {% if member.unit_dept %}
+                                                                <td>{{ member.unit_dept }}</td>
+                                                                <td>
+                                                                    {% if not user.is_active %}
+                                                                        <a href="{% url 'activate_user' user.id %}">Activate User</a>
+                                                                    {% else %}
+                                                                        <a href="{% url 'deactivate_user' user.id %}">De-activate User
+                                                                            
+                                                                        </a>
+                                                                    {% endif %}
+                                                                    &nbsp;&nbsp;|| &nbsp;&nbsp;
+                                                                    <a href="{% url 'update_profile' user.id %}">
+                                                                        <span title="Update User"><i class="fa-solid fa-user-pen"></i></span>
+                                                                    </a>
+                                                                </td>
+                                                            {% else %}
+                                                                <td></td>
+                                                                {% if council_members %}
+                                                                <td>
+                                                                    {% if not user.is_active %}
+                                                                        <a href="{% url 'activate_user' user.id %}">Activate User</a>
+                                                                    {% else %}
+                                                                        <a href="{% url 'deactivate_user' user.id %}">De-activate User</a>
+                                                                    {% endif %}
+                                                                    || 
+                                                                    <a href="{% url 'update_profile' user.id %}">
+                                                                        <span title="Update User"><i class="fa-solid fa-user-pen"></i></span>
+                                                                    </a>
+                                                                </td>
+                                                                {% endif %}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- [ Background-Utilities ] end -->
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{%endblock%}
+
+
+<div class="row">
+    <!-- [ stiped-table ] start -->
+    <div class="col-xl-12">
+        <div class="card">
+            {% if not query %}
+                <div class="card-header">    
+                    <h5>No Search</h5>
+                    <span class="d-block m-t-5">{{query1}}</span>
+                </div>
+            {% else %}
+                <div class="card-header">
+                    <span class="d-block m-t-5">Your search for 
+                        <code>{{query}}</code> yielded <code>{{results.count}}</code> record(s)
+                    </span>    
+                </div>
+                <!-- table -->
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>EMAIL</th>
+                                    <th>FIRST Name</th>
+                                    <th>LAST Name</th>
+                                    <th>UNIT/DEPT</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in results %}
+                                    <tr>
+                                        <td><a href="">{{ member.email }}</a></td>
+                                        <td>{{ member.first_name }}</td>
+                                        <td>{{ member.last_name }}</td>
+                                        <td>{{ member.unit_dept.title }}</td>
+                                        <td>
+                                            <a href="">Update Profile</a>    
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- [ Background-Utilities ] end -->
+</div>

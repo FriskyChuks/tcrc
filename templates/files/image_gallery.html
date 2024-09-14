@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+  {% block title%}TCRC|Image Gallery{% endblock title%}
+
+{% block content %}
+<div class="container">
+  <br>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token%}
+    <div style="text-align: center; color: green;">{{ msg }}</div>
+    <div class="col-lg-12 text-center">
+      <h4>
+        Image Upload Form
+        <span style="float: right;">
+          <a href="{% url 'collection_gallery' %}" class="btn btn-primary w-100 py-3">
+            Go to Gallery
+          </a>
+        </span>
+      </h4>
+      <i>You can select multiple images at thesame time</i>
+    </div>
+    <br>
+    <div class="row g-4">
+        <div class="col-lg-12 col-xl-12">
+            <div class="form-floating">
+              <select name="collection" class="form-control" id="">
+                <!-- <option selected disabled value="">-------------------</option> -->
+                {% for collection in collections %}
+                      <option value="{{collection.id}}" {% if collection.title == "General" %}selected{% endif %}>
+                        {{collection.title}} 
+                      </option>
+                {% endfor %}
+              </select>
+                <label for="project">Select your Unit (Optional)</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <input type="file" multiple name="photo" class="form-control" id="subject" placeholder="Display Image">
+                <label for="subject">
+                  Select Image(s) (<i>The select images would be displayed in iamge gallery</i>)
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary w-100 py-3">Upload Image(s)</button>
+        </div>
+    </div>
+  </form>
+</div>
+{%endblock%}
